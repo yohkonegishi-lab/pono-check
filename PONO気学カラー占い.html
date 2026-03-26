@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>いまのあなたの気持ち</title>
+
+<style>
+body{
+  font-family: sans-serif;
+  background: linear-gradient(#ecfdf5,#fefce8,#ffffff);
+  padding:20px;
+  color:#334155;
+}
+
+.container{
+  max-width:400px;
+  margin:auto;
+}
+
+.card{
+  background:rgba(255,255,255,0.9);
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+h1{
+  text-align:center;
+  font-size:20px;
+}
+
+.sub{
+  display:block;
+  color:#059669;
+  font-size:16px;
+  margin-top:5px;
+}
+
+.desc{
+  text-align:center;
+  font-size:13px;
+  margin:10px 0;
+}
+
+.guide{
+  background:#ecfdf5;
+  padding:10px;
+  border-radius:10px;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin:5px 0;
+  border-radius:12px;
+  border:1px solid #ddd;
+  background:white;
+  text-align:left;
+}
+
+.active{
+  background:#bbf7d0;
+  border-color:#22c55e;
+}
+
+.mainBtn{
+  background:#16a34a;
+  color:white;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.result{
+  margin-top:20px;
+  background:white;
+  padding:20px;
+  border-radius:20px;
+}
+
+.center{
+  text-align:center;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>
+いまのあなたの気持ち
+<span class="sub">〜のぞき見チェック〜</span>
+</h1>
+
+<p class="desc">
+今の気持ちに近いものを選んでください<br>
+いくつでもOKです🌿
+</p>
+
+<div class="guide">
+ぴんとくるものを、気軽にタップしてみてください😊
+</div>
+
+<div id="list"></div>
+
+<button class="mainBtn" onclick="showResult()">チェック完了</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+<script>
+const items = [
+
+"なんとなく疲れている",
+"気持ちを落ち着かせたい",
+"モヤモヤをスッキリさせたい",
+"自分に自信が持てない",
+"誰かに優しくしたい",
+"愛されたい・愛したい",
+
+"誰かを支えたい",
+"コツコツ続けたい",
+"無理せず整えたい",
+"今は大きく動きたくない",
+"自分のペースを守りたい",
+
+"元気がほしい",
+"前向きになりたい",
+"何か始めたい",
+"動きたい",
+"このままじゃ嫌だ",
+
+"人間関係を良くしたい",
+"ご縁を大切にしたい",
+"誰かと繋がっていたい",
+"嫌われたくない",
+"うまくやりたい",
+
+"人生の転機を感じている",
+"立ち止まっている",
+"自分でなんとかしなきゃと思っている",
+"抱え込みすぎている",
+"どうしたらいいかわからない",
+
+"自分に厳しくしすぎている",
+"ちゃんとしなきゃと思っている",
+"正しくありたい",
+"弱い自分を見せたくない",
+"理想に届かない自分が苦しい",
+
+"楽しみたい",
+"笑いたい",
+"軽くなりたい",
+"気を楽にしたい",
+"頑張るのを少しやめたい",
+
+"迷っている",
+"一度リセットしたい",
+"気持ちを切り替えたい",
+"どう進めばいいかわからない",
+"今は止まっている感じがする",
+
+"自分らしくいたい",
+"魅力を出したい",
+"直感を信じたい",
+"本当の自分を出したい",
+"見られ方が気になる"
+
+];
+
+const selected = new Set();
+const list = document.getElementById("list");
+
+items.forEach((text,i)=>{
+  const btn = document.createElement("button");
+
+  btn.innerText = (i+1) + ". " + text;
+
+  btn.onclick = ()=>{
+    if(selected.has(i)){
+      selected.delete(i);
+      btn.classList.remove("active");
+    }else{
+      selected.add(i);
+      btn.classList.add("active");
+    }
+  };
+
+  list.appendChild(btn);
+});
+
+function showResult(){
+  document.getElementById("result").innerHTML = `
+  <div class="result">
+    <div class="center">
+      <p>✨チェック完了✨</p>
+      <h3>あなたの今の状態が見えてきました</h3>
+    </div>
+
+    <p>この結果は、ぽのが直接お伝えします😊</p>
+
+    <div class="guide center">
+      👉 スクショを送ってください。<br>
+      もしくは番号を教えてね😊
+    </div>
+
+    <p class="center" style="color:#059669;">
+      今のあなたに必要な色も見えています🌿
+    </p>
+  </div>
+  `;
+}
+</script>
+
+</body>
+</html>
