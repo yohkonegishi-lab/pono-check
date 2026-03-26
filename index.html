@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -200,6 +199,9 @@ items.forEach((text,i)=>{
 });
 
 function showResult(){
+
+  const numbers = Array.from(selected).map(i => i+1);
+
   document.getElementById("result").innerHTML = `
   <div class="result">
     <div class="center">
@@ -207,12 +209,15 @@ function showResult(){
       <h3>あなたの今の状態が見えてきました</h3>
     </div>
 
-    <p>この結果は、ぽのが直接お伝えします😊</p>
-
     <div class="guide center">
-      👉 スクショを送ってください。<br>
-      もしくは番号を教えてね😊
+      <b>選択された番号</b><br>
+      👉 ${numbers.join("・")}
     </div>
+
+    <p class="center">
+      📸この画面をスクショして<br>
+      LINEで送ってください😊
+    </p>
 
     <p class="center" style="color:#059669;">
       今のあなたに必要な色も見えています🌿
